@@ -1,0 +1,17 @@
+body {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.container {
+    width: auto;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+.container .footer-text{
+    margin: 15px 0;
+}
+
+.badge{
+    background-color: #e4aa48;
+}
