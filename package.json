@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www & node apiServer.js"
+    "start": "node ./bin/www",
+    "dev": "node apiServer.js"
   },
   "devDependencies": {
     "nodemon": "^1.18.4",
@@ -17,6 +18,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "concurrently": "^4.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "^4.16.0",
@@ -24,7 +26,7 @@
     "http-errors": "~1.6.2",
     "http-proxy": "^1.17.0",
     "jade": "~1.11.0",
-    "mongoose": "^5.2.12",
+    "mongoose": "4.13.17",
     "morgan": "~1.9.0",
     "react": "^16.4.2",
     "react-bootstrap": "^0.32.3",
