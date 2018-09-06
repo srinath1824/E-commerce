@@ -81,5 +81,5 @@ app.listen(3002,function(err){
   if(err){
     return console.log(err);
   }
-  console.log("API Server is UP and Running in port 3001");
+  console.log("API Server is UP and Running in port 3002");
 });
