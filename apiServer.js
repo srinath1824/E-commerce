@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 var app = express();
 
@@ -13,6 +15,36 @@ app.use(cookieParser());
 //APIs
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/bookshop');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, '# MongoDB - connection error'));
+// ------>> SET UP SESSION <<--------
+app.use(session({
+  secret: 'mySecretString',
+  saveUninitialized: false,
+  resave: false,
+  cookie: {maxAge: 1000*60*60*24*2},
+  store: new MongoStore({mongooseConnection: db, ttl: 2 * 24 * 60 * 60})
+}))
+//SAVE SESSION CART API
+app.post('/cart', function(req,res){
+  var cart = req.body;
+  req.session.cart = cart;
+  req.session.save(function(err){
+    if(err){
+      throw err;
+    }
+    res.json(req.session.cart);
+  })
+})
+//GET SESSION CART API
+app.get('/cart', function(req, res){
+  if(typeof req.session.cart !== 'undefined'){
+    res.json(req.session.cart);
+  }
+});
+
+// ------->> END SESSION SET <<--------
 
 var Books = require('./models/books');
 
@@ -44,7 +76,7 @@ app.delete('/books/:_id', function(req,res){
 
   Books.remove(query, function(err, books){
     if(err){
-      throw err;
+      console.log("# API DELETE BOOKS: ", err);
     }
     res.json(books);
   })
@@ -73,6 +105,28 @@ app.put('/books/:_id', function(req,res){
     res.json(books);
   })
 
+})
+
+// ---->>> GET BOOKS IMAGES API <<<-----
+app.get('/images', function(req,res){
+  
+  const imgfolder = __dirname + '/public/images';
+  //REQUIRE FILE SYSTEM
+  const fs = require('fs');
+  //READ ALL FILES IN THE DIRECTORY
+  fs.readdir(imgfolder, function(err, files){
+    if(err){
+      return console.error(err);
+    }
+    //CREATE AN EMPTY ARRAY
+    const filesArr = [];
+    //ITERATE ALL IMAGES IN THE DIRECTORY AND ADD TO THE ARRAY
+    files.forEach(function(file){
+      filesArr.push({name: file});
+    });
+    //SEND THE JSON RESPONSE WITH THE ARRAY
+    res.json(filesArr);
+  })
 })
 
 
