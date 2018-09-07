@@ -1,11 +1,21 @@
 Install mongod and robomongo
+Install all packages by running: npm install
 
-mongod --dbpath <path>
+create DBpath folder
+
+run this command:
+mongod --dbpath <DBpath>
+
+run: webpack
+run: npm run dev
+run: npm run start
+
+//sample output from mongodb
 
 {
     "_id" : ObjectId("5b8ca1b7d8d23f340417ca85"),
-    "title" : "reach",
-    "description" : "jkdgb",
+    "title" : "angular",
+    "description" : "angular book",
     "price" : 78,
     "__v" : 0
 }
@@ -13,8 +23,8 @@ mongod --dbpath <path>
 /* 5 */
 {
     "_id" : ObjectId("5b8ca2300b05c144e448df53"),
-    "title" : "uewgd",
-    "description" : "jqfike",
+    "title" : "node",
+    "description" : "nodejs book
     "price" : 89,
     "__v" : 0
 }
@@ -24,6 +34,6 @@ mongod --dbpath <path>
     "_id" : ObjectId("5b8ca6c29bc89b55a0f301b1"),
     "title" : "react",
     "description" : "react book",
-    "price" : 30,
+    "price" : 99,
     "__v" : 0
 }
