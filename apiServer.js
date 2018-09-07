@@ -76,7 +76,7 @@ app.delete('/books/:_id', function(req,res){
 
   Books.remove(query, function(err, books){
     if(err){
-      throw err;
+      console.log("# API DELETE BOOKS: ", err);
     }
     res.json(books);
   })
@@ -105,6 +105,28 @@ app.put('/books/:_id', function(req,res){
     res.json(books);
   })
 
+})
+
+// ---->>> GET BOOKS IMAGES API <<<-----
+app.get('/images', function(req,res){
+  
+  const imgfolder = __dirname + '/public/images';
+  //REQUIRE FILE SYSTEM
+  const fs = require('fs');
+  //READ ALL FILES IN THE DIRECTORY
+  fs.readdir(imgfolder, function(err, files){
+    if(err){
+      return console.error(err);
+    }
+    //CREATE AN EMPTY ARRAY
+    const filesArr = [];
+    //ITERATE ALL IMAGES IN THE DIRECTORY AND ADD TO THE ARRAY
+    files.forEach(function(file){
+      filesArr.push({name: file});
+    });
+    //SEND THE JSON RESPONSE WITH THE ARRAY
+    res.json(filesArr);
+  })
 })
 
 
