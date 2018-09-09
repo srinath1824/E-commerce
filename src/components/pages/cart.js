@@ -54,7 +54,7 @@ class Cart extends React.Component{
             }
     }
     renderEmpty(){
-        return (<div></div>)
+        return (<div>You</div>)
     }
     renderCart(){
         const cartItemsList = this.props.cart.map(function(cartArr){
