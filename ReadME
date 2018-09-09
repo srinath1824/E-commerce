@@ -1,11 +1,12 @@
 Install mongod and robomongo
 Install all packages by running: npm install
 
+//For production no need to do this
+/----------------------
 create DBpath folder
-
 run this command:
 mongod --dbpath <DBpath>
-
+//-----------------------
 run: npm run dev
 run: npm run start
 
