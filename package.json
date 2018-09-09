@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"node ./bin/www\" \"webpack\"",
-    "dev": "node apiServer.js"
+    "start": "concurrently \"node ./bin/www\" \"node apiServer.js\""
   },
   "devDependencies": {
     "nodemon": "^1.18.4",
