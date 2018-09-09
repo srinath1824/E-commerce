@@ -7,7 +7,6 @@ import {Carousel, Grid, Col, Row, Button} from 'react-bootstrap';
 import BookItem from './bookItem';
 import BooksForm from './booksForm'; 
 import Cart from './cart';
-import Books from './books';
 
 class BooksList extends React.Component{
     componentDidMount(){
@@ -46,24 +45,27 @@ class BooksList extends React.Component{
                 <Row>
                 <Carousel>
                     <Carousel.Item>
-                        <img width={900} height={300} alt="900x300" src="/images/img1.jpg" />
+                        <img width={900} height={500} alt="900x500" src="/carousel/img1.jpg" />
                         <Carousel.Caption>
                         <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img width={900} height={300} alt="900x300" src="/images/img7.jpg" />
+                        <img width={900} height={500} alt="900x500" src="/carousel/img2.jpg" />
                         <Carousel.Caption>
                         <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img width={900} height={300} alt="900x300" src="/images/img5.jpg" />
+                        <img width={900} height={500} alt="900x500" src="/carousel/img3.jpg" />
                         <Carousel.Caption>
                         <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img width={900} height={500} alt="900x500" src="/carousel/img4.jpg" />
+                        <Carousel.Caption>
+                        <h3>Fourth slide label</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
